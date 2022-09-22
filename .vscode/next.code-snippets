@@ -1,0 +1,49 @@
+{
+  "Next.js.defaultPage": {
+    "scope": "javascriptreact,typescriptreact",
+    "prefix": "defNextPage",
+    "body": [
+      "import { propTypesValidator } from \"../../utils\";",
+      "import { useHook } from \"../../components/useHook\";",
+      "import { serverSideTranslations } from \"next-i18next/serverSideTranslations\";",
+      "",
+      "const $1: NextPage<{$2:$3}> = ({ $2 }) => {",
+      "  const { t } = useHook(['public']);",
+      "  return (<div>{t(\"PUB_Loading\")}</div>);",
+      "};",
+      "",
+      "$1.propTypes = {$2:propTypesValidator}",
+      "",
+      "export default $1;",
+      "",
+      "$1.getLayout = function getLayout(page: JSX.Element) {",
+      "  return <>{page}</>;",
+      "};",
+      "",
+      "export const getServerSideProps: GetServerSideProps = async ({ locale }) => {",
+      "  return {",
+      "    props: {",
+      "      ...(await serverSideTranslations(locale || \"\", ['public'])),",
+      "      $2:$4",
+      "    },",
+      "  };",
+      "};",
+      ""
+    ],
+    "description": "Next.js.defaultPage"
+  },
+  "Next.js.defaultApi": {
+    "scope": "javascript,typescript",
+    "prefix": "defNextApi",
+    "body": [
+      "",
+      "const $1 = async (req: NextApiRequest, res: NextApiResponse) => {",
+      "  return res.status(200).json({});",
+      "};",
+      "",
+      "export default $1;",
+      ""
+    ],
+    "description": "Next.js.defaultApi"
+  }
+}

@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#__next {
+  @apply w-full h-full overflow-hidden;
+}
+#__next > div:first-child {
+  @apply w-full h-full overflow-x-hidden overflow-y-auto;
+}
+
+#root {
+  @apply overflow-y-auto h-full;
+}
+#docs-root,
+#docs-root > div:first-child {
+  @apply h-full overflow-y-auto;
+}
+// #docs-root > div:first-child > div:first-child {
+//   @apply h-full;
+// }
+// #docs-root > div:first-child > div:first-child > div:first-child {
+//   @apply h-full;
+// }
