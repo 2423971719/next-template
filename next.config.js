@@ -2,10 +2,11 @@
  * @Author: W·S
  * @Date: 2022-09-08 14:13:17
  * @LastEditors: W·S
- * @LastEditTime: 2022-09-22 18:10:43
+ * @LastEditTime: 2022-09-23 00:39:24
  * @Description: Description
  */
-
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withLess = require("next-with-less");
 const securityHeaders = [
   {
     key: "X-DNS-Prefetch-Control",
@@ -56,7 +57,12 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
   async rewrites() {
-    return [];
+    return [
+      {
+        source: "/demo/:page/edit/:path",
+        destination: "/demo/:page/created?id=:path",
+      },
+    ];
   },
   async headers() {
     return [
@@ -67,6 +73,15 @@ const nextConfig = {
       },
     ];
   },
+  lessLoaderOptions: {
+    lessOptions: {
+      modifyVars: {
+        "primary-color": "#9900FF",
+        "border-radius-base": "2px",
+        "font-size-base": "14px",
+      },
+    },
+  },
 };
 
-module.exports = nextConfig;
+module.exports = withLess(nextConfig);
